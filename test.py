@@ -15,4 +15,4 @@ else:
 	ufr = requests.get("https://raw.githubusercontent.com/Abominate34/Test_repo/main/test.py") 
 	f.write(ufr.content)
 	f.close()
-	f=open(r'version',"wb").write(newest).close()
+	f=open(r'version',"wb").write(newest)
