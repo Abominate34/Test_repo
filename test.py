@@ -1,5 +1,6 @@
 import requests 
 import os
+#ver2
 
 version = open('version').read()
 newest = requests.get('https://raw.githubusercontent.com/Abominate34/Test_repo/main/version.txt').text.split('\n')[0]
