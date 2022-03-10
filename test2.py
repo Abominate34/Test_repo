@@ -10,7 +10,7 @@ def checkupdates():
 	print('Проверка обновлений...')
 
 	version_link = 'https://raw.githubusercontent.com/Abominate34/Test_repo/main/version'
-	code_link = "https://raw.githubusercontent.com/Abominate34/Test_repo/main/test.py"
+	code_link = "https://raw.githubusercontent.com/Abominate34/Test_repo/main/test2.py"
 	file_to_restart = "test.py"
 
 	version = open('version').read().split('\n')[0]
