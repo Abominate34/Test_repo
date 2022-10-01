@@ -22,6 +22,14 @@ from telethon.tl.types import Message
 
 from .. import loader, utils
 
+reasons = [
+types.InputReportReasonChildAbuse(),
+types.InputReportReasonCopyright(),
+types.InputReportReasonFake(),
+types.InputReportReasonPornography(),
+types.InputReportReasonSpam(),
+types.InputReportReasonViolence(),
+types.InputReportReasonOther()]
 
 @loader.tds
 class KeywordMod(loader.Module):
