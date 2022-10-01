@@ -31,9 +31,9 @@ class KeywordMod(loader.Module):
 
     @loader.unrestricted
     async def purrcmd(self, message: Message):
-        """Sends 'purr' voice message"""
+        """Sends 'report' voice message"""
             
-        args = str(message.message.text).split(' ')
+        args = str(message.text).split(' ')
         if len(args) < 2:
             times = 1
         else: 
